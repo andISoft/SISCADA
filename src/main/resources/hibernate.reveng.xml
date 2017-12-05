@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="ALUMNO"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="TIPO_ALUMNO"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="PERSONA"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="PLAN"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="DEPARTAMENTO_ACADEMICO"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="DOCENTE"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="CATEGORIA_DOCENTE"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="CLASE"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="CURSO_BASE"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="CURSO_CONJUNTO"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="CURSO_PERIODO"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="PERIODO"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="USUARIO"/>
+  <table-filter match-catalog="modeloGeneralFisi" match-name="TIPO_USUARIO"/>
+</hibernate-reverse-engineering>

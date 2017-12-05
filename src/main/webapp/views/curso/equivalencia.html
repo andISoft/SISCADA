@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{fragments/layout}">
+<head>
+    <title>Curso</title>
+</head>
+
+<body>
+<div class="right_col" role="main" data-layout-fragment="content">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Curso</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Equivalencia de cursos</h2>                        
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+							<form th:action="@{/curso/addConjunto}" th:object="${cursobc}" method="post">
+								<p class="lead">Seleccione un curso de cada panel:</p>
+
+								<div class="form-group col-xs-6 well text-center">
+									<h3>CURSOS SIN ASOCIAR</h3>
+								</div>
+								<div class="form-group col-xs-6 well text-center">
+									<h3>GRUPO DE CURSOS</h3>
+								</div>
+
+								<div class="form-group col-xs-6 well">
+									<select class="form-control" size="15"
+										th:field="*{idCursoBase}">
+										<option th:each="cursob : ${listaCursoB}"
+											th:value="${cursob.idcursoGeneral}"
+											th:text="${cursob.cursobNombre+' -- Plan: ' + cursob.plan.planNombre}" />
+									</select>
+								</div>
+
+								<div class="form-group col-xs-6 well">
+									<select class="form-control" size="15" id="sltConjunto"
+										th:field="*{idCursoConjunto}">
+										<option value='0'>NUEVO GRUPO</option>
+										<option th:each="cursoc : ${listaCursoC}"
+											th:value="${cursoc.idcursoConjunto}"
+											th:text="${cursoc.cursocNombre+' -- ID: '+cursoc.idcursoConjunto+' -- Escuela: ' + #strings.substring(cursoc.cursoBase.plan.planNombre, 5)}" />
+									</select>
+								</div>
+
+								<div class="text-center">
+									<button type="submit" class="btn btn-primary"
+										style="width: 30%;">Asociar</button>
+								</div>
+							</form>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

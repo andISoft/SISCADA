@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu" data-th-fragment="sidebar-menu">
+    <div class="menu_section">
+        <h3>OPCIONES</h3>
+        <ul class="nav side-menu">
+            <li><a><i class="fa fa-book"></i> Curso <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="#" th:href="@{/curso/form}">Registrar</a></li>
+                    <li><a href="#" th:href="@{/curso/conjunto}">Asignar Equivalencia</a></li>
+                    <li><a href="#" th:href="@{/curso/all}">Buscador</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-graduation-cap"></i> Alumno <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="#" th:href="@{/alumno/form}">Registro Individual</a></li>
+                    <li><a href="#" th:href="@{/alumno/bulk}">Registro Grupal</a></li>
+                    <li><a href="#" th:href="@{/alumno/all}">Buscador</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-apple"></i> Docente <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="#" th:href="@{/docente/form}">Registro Individual</a></li>
+                    <li><a href="#" th:href="@{/docente/bulk}">Registro Grupal</a></li>
+                    <li><a href="#" th:href="@{/docente/all}">Buscador</a></li>
+                </ul>
+            </li>           
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

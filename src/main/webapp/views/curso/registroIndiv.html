@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{fragments/layout}">
+<head>
+    <title>Curso</title>
+</head>
+
+<body>
+<div class="right_col" role="main" data-layout-fragment="content">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Curso</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Registro Individual</h2>                        
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+							<form th:action="@{/curso/add}" th:object="${curso}" method="post">
+								<div class="form-group">
+									<div class="col-xs-12">
+										<h2>Datos Obligatorios</h2>
+										<hr />
+									</div>
+
+									<div class="col-xs-12">
+										<label for="nombre">Nombre de curso</label> <input type="text"
+											class="form-control" id="nombre" placeholder="Ingrese Nombre"
+											required="" pattern="([a-zA-Z0-9]\s*){1,71}"
+											th:field="*{nombre}"></input>
+									</div>
+									<div class="col-xs-6">
+										<label for="ciclo">Ciclo</label> <input type="number"
+											class="form-control" id="ciclo" placeholder="Ciclo"
+											required="" min="0" max="10" th:field="*{ciclo}"></input>
+									</div>
+									<div class="col-xs-6">
+										<label for="Apellido_materno">Creditos</label> <input
+											type="number" class="form-control" id="Apellido_materno"
+											placeholder="N° creditos" required="" min="0" max="4"
+											th:field="*{creditos}"></input>
+									</div>
+									<div class="col-xs-6">
+										<label for="codigo">Codigo Curso</label> <input type="text"
+											class="form-control" id="codigo" placeholder="Ingrese Codigo"
+											required="" pattern="[a-zA-Z0-9]{1,71}" th:field="*{codigo}"></input>										
+									</div>
+									<div class="col-xs-6">
+										<label>Plan</label> <select name="plan" class="form-control"
+											th:field="*{idPlan}">
+											<option th:each="plan : ${listaPlan}"
+												th:value="${plan.idplan}" th:text="${plan.planNombre}" />
+										</select> <br />
+									</div>
+									<th:block th:if="${existe} != null">
+										<p class="col-xs-12">Este codigo ya existe para el plan elegido</p>
+									</th:block>
+								</div>
+
+								<div class="text-center">
+									<button type="submit" class="btn btn-primary"
+										style="width: 30%;">Registrar</button>
+								</div>
+							</form>
+						</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

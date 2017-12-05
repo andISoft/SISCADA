@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{fragments/layout}">
+<head>
+    <title th:text="${titulo}">Titulo</title>
+</head>
+
+<body>
+<div class="right_col" role="main" data-layout-fragment="content">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3 th:text="${titulo}">Titulo</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Registro Individual</h2>                        
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+							<form th:action="@{/docente/add}" th:object="${docente}"
+								method="post">
+								<div class="form-group">
+									<div class="col-xs-12">
+										<h2>Datos Obligatorios</h2>
+										<hr />
+									</div>
+
+									<div class="col-xs-12">
+										<label for="nombre">Nombre</label> <input type="text"
+											class="form-control" id="nombre" placeholder="Ingrese Nombre"
+											pattern="([a-zA-Z]\s*){1,26}" required=""
+											th:field="*{nombre}"></input> <input type="hidden"
+											th:field="*{idDocente}" /> <input type="hidden"
+											th:field="*{idPersona}" />
+									</div>
+									<div class="col-xs-6">
+										<label for="Apellido_paterno">Apellido Paterno</label> <input
+											type="text" class="form-control" id="Apellido_paterno"
+											placeholder="Ingrese Apellido Paterno" required=""
+											pattern="([a-zA-Z]\s*){1,16}" th:field="*{apPaterno}"></input>
+									</div>
+									<div class="col-xs-6">
+										<label for="Apellido_materno">Apellido Materno</label> <input
+											type="text" class="form-control" id="Apellido_materno"
+											placeholder="Ingrese Apellido Materno" required=""
+											pattern="([a-zA-Z]\s*){1,17}" th:field="*{apMaterno}"></input>
+									</div>
+									<div class="col-xs-6">
+										<label for="categoria">Categoria</label> <select
+											id="categoria" name="categoria" class="form-control"
+											th:field="*{idCategoria}">
+											<option th:each="categoria : ${categoriasDoc}"
+												th:value="${categoria.idecategoriaDocente}"
+												th:text="${categoria.categoriaDocenteNombre}" />
+										</select>
+									</div>
+									<div class="col-xs-6">
+										<label for="clase">Clase</label> <select id="clase"
+											name="clase" class="form-control" th:field="*{idClase}">
+											<option th:each="clase : ${clasesDoc}"
+												th:value="${clase.idclase}" th:text="${clase.claseNombre}" />
+										</select>
+									</div>
+									<div class="col-xs-6">
+										<label for="codigo">Codigo</label> <input type="text"
+											class="form-control" id="codigo" placeholder="Ingrese Codigo"
+											required="" pattern="[a-zA-Z0-9]{1,9}" th:field="*{codigo}"></input>
+									</div>
+									<div class="col-xs-6">
+										<label>Departamento Academico</label> <select
+											name="Departamento_Academico" class="form-control"
+											th:field="*{idDepAcad}">
+											<option th:each="depAcad : ${depAcadDoc}"
+												th:value="${depAcad.iddepartamentoAcademico}"
+												th:text="${depAcad.departamentoAcademicoNombre}" />
+										</select>
+									</div>
+									<th:block th:if="${existe} != null">
+									<p class="col-xs-12">Este codigo ya existe</p>
+									</th:block>
+								</div>
+
+								<div class="form-group">
+									<div class="col-xs-12">
+										<br />
+										<h2>Datos Opcionales</h2>
+										<hr />
+									</div>
+
+									<div class="col-xs-4">
+										<br /> <label for="Telefono">Telefono</label> <input
+											type="text" class="form-control" id="Telefono"
+											placeholder="Telefono" pattern="[0-9]{7-10}"
+											th:field="*{telefono}"></input>
+									</div>
+									<div class="col-xs-4">
+										<br /> <label for="DNI">DNI</label> <input type="text"
+											class="form-control" id="DNI" placeholder="DNI"
+											pattern="[0-9]{8}" th:field="*{dni}"></input>
+									</div>
+									<div class="col-xs-4">
+										<br /> <label for="Sexo">Sexo</label> <input type="text"
+											class="form-control" id="Sexo" placeholder="M / F"
+											th:field="*{sexo}" /> </select>
+									</div>
+									<br /> <br /> <br />
+									<div class="col-xs-6">
+										<label for="Correo">Correo</label> <input type="email"
+											class="form-control" id="Correo"
+											placeholder="Introduce Correo" th:field="*{correo}"></input>
+									</div>
+									<div class="col-xs-6">
+										<label for="Direccion">Direccion</label> <input type="text"
+											class="form-control" id="Direccion" placeholder="Direccion"
+											pattern="[a-zA-Z0-9]{1-63}" th:field="*{direccion}"></input>
+										<br /> <br />
+									</div>
+								</div>
+
+								<div class="text-center">
+									<button type="submit" class="btn btn-primary"
+										style="width: 30%;"
+										th:text="${docente.codigo != null ? 'Actualizar' : 'Registrar'}">Botón</button>
+								</div>
+							</form>
+						</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

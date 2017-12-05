@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+	<!--**********************IAvisoAjax********************** -->
+
+	<div th:fragment="contentAlumnoAvisoExitoGrup" class="text-center">
+		<p class="lead">Se registraron alumnos exitosamente:</p>
+		<br />
+		<p class="lead" th:text=${cantidadAlumnosGuardados}></p>
+	</div>
+
+	<div th:fragment="contentAlumnoAvisoExistenGrup">
+		<p class=" text-center lead">Se pudo registrar la siguiente
+			cantidad de alumnos:</p>
+		<p class="text-center lead" th:text=${cantidadAlumnosGuardados}></p>
+		<br />
+		<p class="lead">Existen alumnos con codigos ya existentes que no
+			se registraron:</p>
+		<div class="panel-body">
+			<table id="dataTable" class="table table-striped table-bordered"
+				th:object="${listaAlumnosRepetidos}">
+				<thead>
+					<tr>
+						<th>Codigo</th>
+						<th>Nombre</th>
+						<th>ApellidoPaterno</th>
+						<th>ApellidoMaterno</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="alumno : ${listaAlumnosRepetidos}">
+						<td th:text="${alumno.persona.personaCodigo}"></td>
+						<td th:text="${alumno.persona.personaNombre}"></td>
+						<td th:text="${alumno.persona.personaAppaterno}"></td>
+						<td th:text="${alumno.persona.personaApmaterno}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+	<div th:fragment="contentAlumnoAvisoErrorGrup" class="text-center">
+		<p class="lead">Hubo un error en la especificaci&oacute;n de
+			cabeceras del documento subido, por favor revise que todas las
+			cabeceras tengan el mismo nombre e igualdad en mayusculas y
+			minusculas</p>
+
+	</div>
+
+	<div th:fragment="contentAlumnoAvisoErrorPlanGrup" class="text-center">
+		<p class="lead">Hubo un error en la especificaci&oacute;n de un
+			"idPlan", por favor verifique que todos los "idPlan" pertenecen a los
+			mostrados en la pagina principal</p>
+
+	</div>
+
+	<!--**********************FAvisoAjax********************** -->
+
+</body>
+</html>
+
+
+
+
+
+

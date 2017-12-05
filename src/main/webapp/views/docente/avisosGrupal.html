@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+	<!--**********************IAvisoAjax********************** -->
+	<div th:fragment="contentDocenteAvisoExitoGrup" class="text-center">
+		<p class="lead">Se registraron docentes exitosamente:</p>
+		<br />
+		<p class="lead" th:text=${cantidadDocentesGuardados}></p>
+	</div>
+
+	<div th:fragment="contentDocenteAvisoExistenGrup">
+
+		<p class=" text-center lead">Se pudo registrar la siguiente
+			cantidad de docentes:</p>
+		<p class="text-center lead" th:text=${cantidadDocentesGuardados}></p>
+		<br />
+		<p class="lead">Existen docentes con codigos ya existentes que no
+			se registraron:</p>
+		<div class="panel-body">
+			<table id="dataTable" class="table table-striped table-bordered"
+				th:object="${listaDocentesRepetidos}">
+				<thead>
+					<tr>
+						<th>Codigo</th>
+						<th>Nombre</th>
+						<th>ApellidoPaterno</th>
+						<th>ApellidoMaterno</th>						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="docente : ${listaDocentesRepetidos}">
+						<td th:text="${docente.persona.personaCodigo}"></td>
+						<td th:text="${docente.persona.personaNombre}"></td>
+						<td th:text="${docente.persona.personaAppaterno}"></td>
+						<td th:text="${docente.persona.personaApmaterno}"></td>						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div th:fragment="contentDocenteAvisoErrorGrup" class="text-center">
+		<p class="lead">Hubo un error en la especificaci&oacute;n de
+			cabeceras del documento subido, por favor revise que todas las
+			cabeceras tengan el mismo nombre e igualdad en mayusculas y
+			minusculas</p>
+
+	</div>
+
+	<div th:fragment="contentDocenteAvisoIdsGrup" class="text-center">
+		<p class="lead">Hubo un error en la especificaci&oacute;n de un
+			"idClase", "idCategoria" o "idDepAcad", por favor verifique que no
+			existan espacios vacios.</p>
+
+	</div>
+
+	<!--**********************FAvisoAjax********************** -->
+
+</body>
+</html>
+
+
+
+
+
+

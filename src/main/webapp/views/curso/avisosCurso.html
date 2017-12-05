@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{fragments/layout}">
+<head>
+</head>
+<body>
+
+
+	<!--**********************IAviso********************** -->
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="x_panel">
+						<div class="x_content">
+							<div th:if="${fragmento == 'contentCursoAvisoExitoReg'}"
+								class="text-center">
+								<p class="lead">Curso registrado exitosamente!</p>
+								<a href="#" th:href="@{/curso/form}"><button type="button"
+										class="btn btn-primary">Volver a registro</button></a> <a href="#"
+									th:href="@{/curso/all}"><button type="button"
+										class="btn btn-primary">Ir al buscador</button></a>
+							</div>
+
+							<div th:if="${fragmento == 'contentCursoAvisoExitoEquiv'}"
+								class="text-center">
+								<p class="lead">Curso asociado exitosamente!</p>
+								<a href="#" th:href="@{/curso/conjunto}"><button
+										type="button" class="btn btn-primary">Asociar otro
+										curso</button></a> <a href="#" th:href="@{/curso/all}"><button
+										type="button" class="btn btn-primary">Ir al buscador</button></a>
+							</div>
+
+							<div th:if="${fragmento == 'contentCursoAvisoError'}"
+								class="text-center">
+								<p>Hubo un error al asociar</p>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+</html>

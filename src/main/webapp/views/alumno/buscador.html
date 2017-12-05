@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" data-layout-decorate="~{fragments/layout}">
+<head>
+	<title th:text="${titulo}">Titulo</title>
+</head>
+<body>
+<div class="right_col" role="main" data-layout-fragment="content">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3 th:text="${titulo}">Titulo</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+							<h3>BUSCADOR</h3>
+							<div>
+								<form th:object="${search}" class="form-inline"
+									th:action="@{/alumno/search}" id="frmFiltro" name="frmFiltro">
+									Filtro:
+									<div class="form-group">
+										<select name="sltFiltro" id="sltFiltro" th:field="*{filtro}">
+											<option value="0" selected="selected">Seleccionar</option>
+											<option value="1">Codigo</option>
+											<option value="2">Nombre</option>
+											<option value="3">ApPaterno</option>
+											<option value="4">ApMaterno</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<input type="text" id="inFiltro" name="inFiltro" size="12"
+											disabled="disabled" th:field="*{valor}"></input>
+									</div>
+									<div class="form-group">
+										<button type="submit" id="btnFiltro" name="btnFiltro"
+											size="12" disabled="disabled">BUSCAR</button>
+									</div>
+								</form>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+                    <div class="x_content">
+								<table id="dataTable" class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>Codigo</th>
+											<th>Nombre</th>
+											<th>ApellidoPaterno</th>
+											<th>ApellidoMaterno</th>											
+											<th>Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="alumno : ${listaAlumno}">
+											<td th:text="${alumno.codigo}"></td>
+											<td th:text="${alumno.nombre}"></td>
+											<td th:text="${alumno.apPaterno}"></td>
+											<td th:text="${alumno.apMaterno}"></td>											
+											<td class="text-center"><a th:href="@{/alumno/form/__${alumno.idAlumno}__}"><button
+														class="btn btn-primary">
+														<span class="fa fa-pencil"
+															aria-hidden="true"></span>
+													</button></a>												
+												<button class="btn btn-info" data-toggle="modal"
+													th:attr="data-target='#'+${alumno.idAlumno}">
+													<span class="fa fa-eye"
+														aria-hidden="true"></span>
+												</button>
+												<!-- Modal -->
+												<div class="modal fade" th:id="${alumno.idAlumno}"
+													aria-labelledby="alumnoLabel" tabindex="-1" role="dialog"
+													aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal">
+																	<span aria-hidden="true">&times;</span><span
+																		class="sr-only">Close</span>
+																</button> 
+																<h4 class="modal-title">
+																	<span th:text="'Detalles de '+${alumno.apPaterno}+' '+${alumno.apMaterno}+', '
+																	+${alumno.nombre}">Detalles</span>
+																</h4>
+															</div>
+															<div class="modal-body">
+																<form class="form-horizontal" role="form">
+																	<fieldset>
+																		<div class="form-group">
+																			<label class="col-sm-2 control-label">DNI:</label>
+																			<div class="col-sm-10">
+																				<span class="form-control" th:text="${alumno.dni}"></span>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<label class="col-sm-2 control-label">Correo:</label>
+																			<div class="col-sm-10">
+																				<span class="form-control" th:text="${alumno.correo}"></span>
+																			</div>
+																		</div>
+																		<div class="form-group">
+																			<label class="col-sm-2 control-label">Sexo:</label>
+																			<div class="col-sm-10">
+																				<span class="form-control" th:text="${alumno.sexo}"></span>
+																			</div>
+																		</div>																		
+																		<div class="form-group">
+																			<label class="col-sm-2 control-label">Telefono:</label>
+																			<div class="col-sm-10">
+																				<span class="form-control" th:text="${alumno.telefono}"></span>
+																			</div>
+																		</div>																	
+																		<div class="form-group">
+																			<label class="col-sm-2 control-label">Direccion:</label>
+																			<div class="col-sm-10">
+																				<span class="form-control" th:text="${alumno.direccion}"></span>
+																			</div>
+																		</div>	
+																		<div class="form-group">
+																			<label class="col-sm-2 control-label">Plan:</label>
+																			<div class="col-sm-10">																				
+																				<th:block th:each="plan : ${listaPlan}" th:if="${plan.idplan == alumno.idPlan}">
+																					<span class="form-control" 
+																						th:text="${plan.planNombre}"></span>
+																				</th:block>
+																			</div>
+																		</div>
+																	</fieldset>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div> 
+												<!-- /Modal -->
+												
+												<!--  
+												<button class="btn btn-danger">
+													<span class="fa fa-trash" aria-hidden="true"></span>
+												</button>-->
+												</td>
+										</tr>
+									</tbody>
+								</table>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
